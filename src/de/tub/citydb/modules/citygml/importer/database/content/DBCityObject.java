@@ -34,6 +34,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import oracle.spatial.geometry.JGeometry;
@@ -54,15 +55,12 @@ import org.citygml4j.util.gmlid.DefaultGMLIdManager;
 
 import de.tub.citydb.config.Config;
 import de.tub.citydb.config.internal.Internal;
-import de.tub.citydb.config.project.importer.CreationDateMode;
-import de.tub.citydb.config.project.importer.TerminationDateMode;
 import de.tub.citydb.database.DatabaseConnectionPool;
 import de.tub.citydb.database.TableEnum;
 import de.tub.citydb.log.Logger;
 import de.tub.citydb.modules.citygml.common.database.xlink.DBXlinkBasic;
 import de.tub.citydb.modules.citygml.importer.util.LocalGeometryXlinkResolver;
 import de.tub.citydb.util.Util;
-import java.util.GregorianCalendar;
 
 public class DBCityObject implements DBImporter {
 	private final Logger LOG = Logger.getInstance();
