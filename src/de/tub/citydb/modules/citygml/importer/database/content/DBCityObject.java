@@ -55,6 +55,8 @@ import org.citygml4j.util.gmlid.DefaultGMLIdManager;
 
 import de.tub.citydb.config.Config;
 import de.tub.citydb.config.internal.Internal;
+import de.tub.citydb.config.project.importer.CreationDateMode;
+import de.tub.citydb.config.project.importer.TerminationDateMode;
 import de.tub.citydb.database.DatabaseConnectionPool;
 import de.tub.citydb.database.TableEnum;
 import de.tub.citydb.log.Logger;
