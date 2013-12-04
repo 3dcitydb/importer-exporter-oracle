@@ -226,6 +226,9 @@ public class Exporter implements EventHandler {
 
 		// set target reference system for export
 		DatabaseSrs targetSRS = config.getProject().getExporter().getTargetSRS();
+		if (!targetSRS.isSupported())
+			targetSRS = dbPool.getActiveConnectionMetaData().getReferenceSystem();
+
 		internalConfig.setExportTargetSRS(targetSRS);
 		internalConfig.setTransformCoordinates(targetSRS.isSupported() && 
 				targetSRS.getSrid() != dbPool.getActiveConnectionMetaData().getReferenceSystem().getSrid());
