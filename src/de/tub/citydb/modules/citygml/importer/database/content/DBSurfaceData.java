@@ -412,7 +412,18 @@ public class DBSurfaceData implements DBImporter {
 												}
 
 												String coords = Util.collection2string(texCoord.getValue(), " ");
+												
+												// check for maximum number of texture coordinates
+												if (coords.length() > 4000) {
+													StringBuilder msg = new StringBuilder(Util.getFeatureSignature(
+															CityGMLClass.PARAMETERIZED_TEXTURE, 
+															abstractSurfData.getId()));
 
+													msg.append(": Texture coordinates exceed 4000 characters and will not be imported.");
+													LOG.error(msg.toString());
+													continue;
+												}
+		
 												DBXlinkTextureParam xlink = new DBXlinkTextureParam(
 														surfaceDataId,
 														ring,
