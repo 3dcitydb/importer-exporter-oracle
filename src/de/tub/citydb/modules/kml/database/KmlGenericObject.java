@@ -658,7 +658,12 @@ public abstract class KmlGenericObject {
 			byte[] edges = {0, 1, 1, 2, 2, 0};			
 			boolean hasFound = false;
 			
-			for (int i = 0; !hasFound && i < indexes.length; i += 3) {			
+			for (int i = 0; !hasFound && i < indexes.length; i += 3) {
+				
+				// skip degenerated triangles
+				if (indexes[i] == indexes[i + 1] || indexes[i + 1] == indexes[i + 2])
+					continue;
+				
 				for (int j = 0; j < edges.length; j += 2) {
 					int first = i + edges[j];
 					int second = i + edges[j + 1]; 
