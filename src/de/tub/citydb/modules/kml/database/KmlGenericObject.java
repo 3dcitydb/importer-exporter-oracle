@@ -661,7 +661,7 @@ public abstract class KmlGenericObject {
 			for (int i = 0; !hasFound && i < indexes.length; i += 3) {
 				
 				// skip degenerated triangles
-				if (indexes[i] == indexes[i + 1] || indexes[i + 1] == indexes[i + 2])
+				if (indexes[i] == indexes[i + 1] || indexes[i + 1] == indexes[i + 2] || indexes[i] == indexes[i + 2])
 					continue;
 				
 				for (int j = 0; j < edges.length; j += 2) {
