@@ -352,7 +352,7 @@ public class CityFurniture extends KmlGenericObject{
 
 		if (transformation == null) { // no implicit geometry
 			// undo trick for very close coordinates
-			double[] originInWGS84 = convertPointCoordinatesToWGS84(new double[] {getOriginX()/100, getOriginY()/100, getOriginZ()/100});
+			double[] originInWGS84 = convertPointCoordinatesToWGS84(new double[] {getOriginX()/CLOSE_COORDS_FACTOR, getOriginY()/CLOSE_COORDS_FACTOR, getOriginZ()});
 			setLocationX(reducePrecisionForXorY(originInWGS84[0]));
 			setLocationY(reducePrecisionForXorY(originInWGS84[1]));
 			setLocationZ(reducePrecisionForZ(originInWGS84[2]));
@@ -426,9 +426,9 @@ public class CityFurniture extends KmlGenericObject{
 		List<Point3d> coords = new ArrayList<Point3d>();
 
 		if (transformation != null) { // for implicit geometries
-			setOriginX(refPointX * 100); // trick for very close coordinates
-			setOriginY(refPointY * 100);
-			setOriginZ(refPointZ * 100);
+			setOriginX(refPointX * CLOSE_COORDS_FACTOR); // trick for very close coordinates
+			setOriginY(refPointY * CLOSE_COORDS_FACTOR);
+			setOriginZ(refPointZ);
 			// dummy
 			Point3d point3d = new Point3d(getOriginX(), getOriginY(), getOriginZ());
 			coords.add(point3d);
@@ -578,9 +578,9 @@ public class CityFurniture extends KmlGenericObject{
 
 							for (int j = startOfCurrentRing; j < startOfNextRing - 3; j = j+3) {
 
-								giOrdinatesArray[(j-(currentContour-1)*3)] = ordinatesArray[j] * 100; // trick for very close coordinates
-								giOrdinatesArray[(j-(currentContour-1)*3)+1] = ordinatesArray[j+1] * 100;
-								giOrdinatesArray[(j-(currentContour-1)*3)+2] = ordinatesArray[j+2] * 100;
+								giOrdinatesArray[(j-(currentContour-1)*3)] = ordinatesArray[j] * CLOSE_COORDS_FACTOR; // trick for very close coordinates
+								giOrdinatesArray[(j-(currentContour-1)*3)+1] = ordinatesArray[j+1] * CLOSE_COORDS_FACTOR;
+								giOrdinatesArray[(j-(currentContour-1)*3)+2] = ordinatesArray[j+2];
 
 								TexCoords texCoordsForThisSurface = null;
 								if (texCoordsTokenized != null) {
