@@ -210,10 +210,11 @@ public class LandUse extends KmlGenericObject{
 					break;
 				case DisplayForm.COLLADA:
 					fillGenericObjectForCollada(rs);
+					String currentgmlId = getGmlId();
 					setGmlId(work.getGmlId());
 					setId(work.getId());
 
-					if (getGeometryAmount() > GEOMETRY_AMOUNT_WARNING) {
+					if (currentgmlId != work.getGmlId() && getGeometryAmount() > GEOMETRY_AMOUNT_WARNING) {
 						Logger.getInstance().info("Object " + work.getGmlId() + " has more than " + GEOMETRY_AMOUNT_WARNING + " geometries. This may take a while to process...");
 					}
 
