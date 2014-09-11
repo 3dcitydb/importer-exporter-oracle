@@ -234,7 +234,6 @@ public abstract class KmlGenericObject {
 		defaultX3dMaterial = cityGMLFactory.createX3DMaterial();
 		defaultX3dMaterial.setAmbientIntensity(0.2d);
 		defaultX3dMaterial.setShininess(0.2d);
-		defaultX3dMaterial.setTransparency(0d);
 		defaultX3dMaterial.setDiffuseColor(getX3dColorFromString("0.8 0.8 0.8"));
 		defaultX3dMaterial.setSpecularColor(getX3dColorFromString("1.0 1.0 1.0"));
 		defaultX3dMaterial.setEmissiveColor(getX3dColorFromString("0.0 0.0 0.0"));
