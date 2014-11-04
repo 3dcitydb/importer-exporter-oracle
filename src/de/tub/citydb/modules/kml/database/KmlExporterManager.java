@@ -184,7 +184,7 @@ public class KmlExporterManager {
     							}
     						}
 
-    						if (!config.getProject().getKmlExporter().isOneFilePerObject() || !config.getProject().getKmlExporter().isExportAsKmz()) {
+    						if (!isBBoxActive || !config.getProject().getKmlExporter().isOneFilePerObject() || !config.getProject().getKmlExporter().isExportAsKmz()) {
 	       						try {
 	       							File balloonsDirectory = new File(directory, BalloonTemplateHandlerImpl.balloonDirectoryName);
 	       							if (!balloonsDirectory.exists()) {
