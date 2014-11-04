@@ -500,6 +500,7 @@ public class KmlExportWorker implements Worker<KmlSplittingResult> {
 			colladaBundle.setTexOrdImages(objectGroup.getTexOrdImages());
 			colladaBundle.setPlacemark(objectGroup.createPlacemarkForColladaModel());
 			colladaBundle.setGmlId(objectGroup.getGmlId());
+			colladaBundle.setId(objectGroup.getId());
 
 			kmlExporterManager.print(colladaBundle,
 									 objectGroup.getId(),					
