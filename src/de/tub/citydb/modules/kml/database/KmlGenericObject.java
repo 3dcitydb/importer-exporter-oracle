@@ -814,7 +814,12 @@ public abstract class KmlGenericObject {
 			if (x3dMaterials == null) {
 				x3dMaterials = new HashMap<Long, X3DMaterial>();
 			}
-			x3dMaterials.put(new Long(surfaceId), x3dMaterial);
+			//x3dMaterials.put(new Long(surfaceId), x3dMaterial);
+			if(x3dMaterial == defaultX3dMaterial && x3dMaterials.containsKey(new Long(surfaceId)) ){
+
+			}else{
+				x3dMaterials.put(new Long(surfaceId), x3dMaterial);
+			}
 		}
 	}
 
