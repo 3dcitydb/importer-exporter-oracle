@@ -256,12 +256,14 @@ public class Queries {
 				"AND o2ts.thematic_surface_id = ts.id " +
 				"AND o.id = o2ts.opening_id " +
 			"UNION " + 
-			"SELECT b.lod4_geometry_id " + 
-			"FROM BUILDING b LEFT JOIN THEMATIC_SURFACE ts ON ts.building_id = b.id " + 
-			"WHERE " +  
-				"b.id = ? " +
-				"AND b.lod4_geometry_id IS NOT NULL " +
-				"AND ts.lod4_multi_surface_id IS NULL";
+			"SELECT lod4_geometry_id FROM BUILDING " +
+			"WHERE " +
+				"id = ? " +
+				"AND id NOT IN " +
+				"(SELECT building_id FROM THEMATIC_SURFACE " +
+					"WHERE building_id = ? " +
+					"AND lod4_multi_surface_id IS NOT NULL " +
+				")";
 				
 		private static final String BUILDING_PART_GEOMETRY_LOD4 =
 			"SELECT sg.geometry, ts.type, sg.id " +
@@ -302,12 +304,14 @@ public class Queries {
 				"AND o2ts.thematic_surface_id = ts.id " +
 				"AND o.id = o2ts.opening_id " +
 			"UNION " + 
-			"SELECT b.lod3_geometry_id " + 
-			"FROM BUILDING b LEFT JOIN THEMATIC_SURFACE ts ON ts.building_id = b.id " + 
-			"WHERE " +  
-				"b.id = ? " +
-				"AND b.lod3_geometry_id IS NOT NULL " +
-				"AND ts.lod3_multi_surface_id IS NULL";
+			"SELECT lod3_geometry_id FROM BUILDING " +
+			"WHERE " +
+				"id = ? " +
+				"AND id NOT IN " +
+				"(SELECT building_id FROM THEMATIC_SURFACE " +
+					"WHERE building_id = ? " +
+					"AND lod3_multi_surface_id IS NOT NULL " +
+				")";
 
 		private static final String BUILDING_PART_GEOMETRY_LOD3 =
 			"SELECT sg.geometry, ts.type, sg.id " +
@@ -330,12 +334,14 @@ public class Queries {
 	  			"bi.building_id = ? " +
 				"AND bi.lod2_geometry_id IS NOT NULL " +
 			"UNION " + 
-			"SELECT b.lod2_geometry_id " + 
-			"FROM BUILDING b LEFT JOIN THEMATIC_SURFACE ts ON ts.building_id = b.id " + 
-			"WHERE " +  
-				"b.id = ? " +
-				"AND b.lod2_geometry_id IS NOT NULL " +
-				"AND ts.lod2_multi_surface_id IS NULL";
+			"SELECT lod2_geometry_id FROM BUILDING " +
+			"WHERE " +
+				"id = ? " +
+				"AND id NOT IN " +
+				"(SELECT building_id FROM THEMATIC_SURFACE " +
+					"WHERE building_id = ? " +
+					"AND lod2_multi_surface_id IS NOT NULL " +
+				")";
 		
 		private static final String BUILDING_PART_COLLADA_LOD1_ROOT_IDS =
 			"SELECT b.lod1_geometry_id " +
